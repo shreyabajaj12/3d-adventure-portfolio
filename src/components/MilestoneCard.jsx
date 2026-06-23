@@ -63,18 +63,13 @@ export default function MilestoneCard({ station }) {
       ]
     },
 
-    // ── Section 2: Projects & Education ──────────────────
+    // ── Section 2: Projects ──────────────────
     punjab: {
-      tag: "Education & Projects",
-      title: "Projects & Education",
-      subtitle: "B.Tech CSE (AI & ML) · Lovely Professional University",
-      description: "Specializing in Artificial Intelligence and Machine Learning at LPU, Punjab. Here are select projects that reflect my engineering depth:",
+      tag: "Projects",
+      title: "What I've Built",
+      subtitle: "A selection of projects that reflect my engineering depth",
+      description: "Here are some projects I've built across AI/ML, full-stack, and backend domains:",
       isProjects: true,
-      education: {
-        school: "Lovely Professional University (LPU), Punjab",
-        degree: "B.Tech — Computer Science & Engineering",
-        spec: "Specialization: Artificial Intelligence & Machine Learning"
-      },
       projectList: [
         {
           title: "Resume Job Predictor",
@@ -102,9 +97,9 @@ export default function MilestoneCard({ station }) {
       description: "Gaining hands-on enterprise experience at Nielsen — one of the world's leading data analytics companies — building scalable software features in a production environment.",
       details: [
         { icon: "💼", label: "Role", value: "Software Developer Intern @ Nielsen" },
-        { icon: "📍", label: "Location", value: "Bengaluru, Karnataka (Silicon Valley of India)" },
-        { icon: "🗓️", label: "Duration", value: "Ongoing Internship" },
-        { icon: "🤝", label: "Availability", value: "Open to full-time Software Engineer roles" },
+        { icon: "🧰", label: "Tech Stack", value: "Java, Spring Boot, REST APIs, SQL, Git" },
+        { icon: "🚀", label: "What I Do", value: "Building and shipping production-grade backend features in a real enterprise environment" },
+        { icon: "📈", label: "Impact", value: "Contributing to scalable data analytics systems used by global clients" },
       ]
     },
 
@@ -139,26 +134,17 @@ export default function MilestoneCard({ station }) {
       <div className="card-body">
         <p className="card-description">{data.description}</p>
 
-        {/* ── Projects & Education ── */}
+        {/* ── Projects ── */}
         {data.isProjects && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div className="nielsen-internship-details">
-              <div className="nielsen-role">🎓 Education</div>
-              <p className="nielsen-desc" style={{ fontWeight: 600, color: 'var(--color-dark)' }}>{data.education.school}</p>
-              <p className="nielsen-desc">{data.education.degree}</p>
-              <p className="nielsen-desc">{data.education.spec}</p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <span className="section-label">Featured Projects</span>
-              {data.projectList.map((project, idx) => (
-                <div key={idx} className="project-item">
-                  <div className="project-title">{project.title}</div>
-                  <div className="project-tech">{project.tech}</div>
-                  <p className="project-desc">{project.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <span className="section-label">Featured Projects</span>
+            {data.projectList.map((project, idx) => (
+              <div key={idx} className="project-item">
+                <div className="project-title">{project.title}</div>
+                <div className="project-tech">{project.tech}</div>
+                <p className="project-desc">{project.desc}</p>
+              </div>
+            ))}
           </div>
         )}
 

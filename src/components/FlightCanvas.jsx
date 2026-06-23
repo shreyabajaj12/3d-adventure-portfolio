@@ -479,7 +479,7 @@ export default function FlightCanvas({ scrollProgress, activeStation }) {
     nielsenN.add(l2);
     const diagonal = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.1, 0.2), trimMat);
     diagonal.position.set(0, 0, 0);
-    diagonal.rotation.z = -0.6; // Angle
+    diagonal.rotation.z = 0.6; // Angle — corrected: top-left to bottom-right diagonal for N
     diagonal.castShadow = true;
     nielsenN.add(diagonal);
     nielsenN.position.set(0, 5.8, 1.9); // Center front of tower
