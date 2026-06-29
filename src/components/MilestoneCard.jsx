@@ -52,7 +52,7 @@ export default function MilestoneCard({ station }) {
       description: "Gaining hands-on enterprise experience at Nielsen — one of the world's leading data analytics companies — building scalable software features in a production environment.",
       details: [
         { icon: "💼", label: "Role", value: "Software Developer Intern @ Nielsen" },
-        { icon: "🧰", label: "Tech Stack", value: "Java, Spring Boot, REST APIs, SQL, Git" },
+        { icon: "🧰", label: "Tech Stack", value: "Spring Boot, React, REST APIs, SQL, Git, Swagger, Docker" },
         { icon: "🚀", label: "What I Do", value: "Building and shipping production-grade backend features in a real enterprise environment" },
         { icon: "📈", label: "Impact", value: "Contributing to scalable data analytics systems used by global clients" },
       ]
