@@ -553,6 +553,7 @@ body {
 .profile-boarding-pass.leetcode { background: #fef08a; }
 .profile-boarding-pass.codeforces { background: #bfdbfe; }
 .profile-boarding-pass.linkedin { background: #bae6fd; }
+.profile-boarding-pass.email { background: #fecaca; }
 
 .profile-logo {
   width: 32px;
@@ -694,12 +695,13 @@ body {
     font-size: 15px;
   }
 
-  /* On mobile, all cards center */
+  /* On mobile, all cards center and flow with consistent spacing */
   .milestone-section,
   .milestone-section:nth-child(odd),
   .milestone-section:nth-child(even) {
     justify-content: center;
-    padding: 16px;
+    min-height: auto;
+    padding: 60px 16px;
   }
 
   /* Slide from bottom on mobile instead of sides */

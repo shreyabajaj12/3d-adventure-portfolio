@@ -1,52 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function MilestoneCard({ station }) {
   if (!station) return null;
-
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSending, setIsSending] = useState(false);
-  const [sendSuccess, setSendSuccess] = useState(false);
-  const [sendError, setSendError] = useState(false);
-
-  const handleInputChange = (field, e) => {
-    setFormData({ ...formData, [field]: e.target.value });
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in all required fields!");
-      return;
-    }
-
-    setIsSending(true);
-    setSendSuccess(false);
-    setSendError(false);
-
-    try {
-      const response = await fetch('https://portfolio-backend-vdv0.onrender.com/api/ptrf/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userEmail: formData.email,
-          name: formData.name,
-          body: formData.message
-        })
-      });
-
-      if (response.ok) {
-        setSendSuccess(true);
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setSendError(true);
-      }
-    } catch (err) {
-      console.error(err);
-      setSendError(true);
-    } finally {
-      setIsSending(false);
-    }
-  };
 
   const milestoneData = {
     // ── Section 1: About ──────────────────────────────────
@@ -107,15 +62,16 @@ export default function MilestoneCard({ station }) {
     contact: {
       tag: "Get In Touch",
       title: "Let's Connect",
-      subtitle: "Reach out via profiles or drop me a message",
+      subtitle: "Reach out via profiles or send an email",
       description: "Whether it's about a role, a collaboration, or just a hello — I'd love to hear from you!",
       isContact: true,
       profiles: [
+        { name: "Email", username: "shreyabajaj589", url: "https://mail.google.com/mail/?view=cm&fs=1&to=shreyabajaj589@gmail.com", class: "email", icon: "✉️" },
+        { name: "LinkedIn", username: "shreya-bajaj", url: "https://www.linkedin.com/in/shreya-bajaj-541998279/", class: "linkedin", icon: "👔" },
         { name: "GitHub", username: "shreyabajaj12", url: "https://github.com/shreyabajaj12", class: "github", icon: "🐙" },
         { name: "LeetCode", username: "shresaw", url: "https://leetcode.com/u/shresaw/", class: "leetcode", icon: "🏆" },
         { name: "Codeforces", username: "ShreyaBajaj", url: "https://codeforces.com/profile/ShreyaBajaj", class: "codeforces", icon: "📊" },
-        { name: "LinkedIn", username: "shreya-bajaj", url: "https://www.linkedin.com/in/shreya-bajaj-541998279/", class: "linkedin", icon: "👔" },
-        { name: "Resume / CV", username: "View PDF", url: "https://drive.google.com/file/d/15loLVb7wg3ZEL_Vvs_0P3yh4MvNKn3c0/view?usp=sharing", class: "github", icon: "📄" },
+        { name: "Resume / CV", username: "View PDF", url: "https://drive.google.com/file/d/1uZYuogsUhM3b85NlfOpoQZqC2vWen1uN/view?usp=sharing", class: "github", icon: "📄" },
       ]
     }
   };
@@ -165,7 +121,7 @@ export default function MilestoneCard({ station }) {
           </div>
         )}
 
-        {/* ── Contact: profiles + form ── */}
+        {/* ── Contact: profiles ── */}
         {data.isContact && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
 
@@ -190,42 +146,6 @@ export default function MilestoneCard({ station }) {
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div className="contact-form-wrapper">
-              <p className="contact-form-title">✉️ Send a Message</p>
-              <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e)}
-                  required
-                  className="contact-input"
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e)}
-                  required
-                  className="contact-input"
-                />
-                <textarea
-                  placeholder="Your message..."
-                  rows="3"
-                  value={formData.message}
-                  onChange={(e) => handleInputChange('message', e)}
-                  required
-                  className="contact-input contact-textarea"
-                />
-                <button type="submit" disabled={isSending} className="contact-submit">
-                  {isSending ? "Sending..." : "Send Message →"}
-                </button>
-              </form>
-
-              {sendSuccess && <div className="toast-success">✓ Message sent! I'll get back to you soon.</div>}
-              {sendError && <div className="toast-error">✕ Failed to send. Try reaching me on LinkedIn.</div>}
             </div>
 
           </div>
